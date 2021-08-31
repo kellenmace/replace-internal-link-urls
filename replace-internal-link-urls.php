@@ -15,7 +15,7 @@
  *
  * @param string $content Post content.
  *
- * @return string Post content, with internal link URLs replaced.
+ * @return string Post content, with internal link URLs possibly replaced.
  */
 function replace_headless_content_link_urls(string $content): string
 {
