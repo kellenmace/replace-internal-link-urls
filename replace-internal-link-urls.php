@@ -24,6 +24,7 @@ function replace_headless_content_link_urls(string $content): string
     }
 
     // TODO: Get this value from an environment variable or the database.
+    // If you're using Faust.js, you can call wpe_headless_get_setting( 'frontend_uri' )
     $frontend_app_url = 'http://localhost:3000';
     $site_url         = site_url();
 
