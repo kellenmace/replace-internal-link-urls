@@ -3,7 +3,7 @@
 /**
  * Plugin Name: Replace Internal Link URLs
  * Description: Replaces internal link URL domains with that of the decoupled frontend JS app.
- * Version:     0.1.0
+ * Version:     0.1.1
  * Author:      Kellen Mace
  * Author URI:  https://kellenmace.com/
  * License:     GPLv2 or later
@@ -19,6 +19,11 @@
  */
 function replace_headless_content_link_urls(string $content): string
 {
+    // Bail if function doesn't exist to avoid PHP errors
+    if (false === function_exists('is_graphql_request')) {
+        return $content;
+    }
+        
     if (!is_graphql_request() && !defined('REST_REQUEST')) {
         return $content;
     }
