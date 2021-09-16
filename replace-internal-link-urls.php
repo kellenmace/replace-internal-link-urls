@@ -19,11 +19,10 @@
  */
 function replace_headless_content_link_urls(string $content): string
 {
-    if (!function_exists('is_graphql_request')) {
-        return $content;
-    }
+    $is_graphql_request = function_exists('is_graphql_request') && is_graphql_request();
+    $is_rest_request    = defined('REST_REQUEST');
 
-    if (!is_graphql_request() && !defined('REST_REQUEST')) {
+    if (!$is_graphql_request && !$is_rest_request) {
         return $content;
     }
 
