@@ -22,6 +22,7 @@ function replace_headless_content_link_urls(string $content): string
     $is_graphql_request = function_exists('is_graphql_request') && is_graphql_request();
     $is_rest_request    = defined('REST_REQUEST');
 
+    // Don't modify the content if this is not a GraphQL or REST API request.
     if (!$is_graphql_request && !$is_rest_request) {
         return $content;
     }
